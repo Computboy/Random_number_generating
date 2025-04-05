@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机数生成器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #result, #allResults {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>随机数生成器</h1>
+    <button id="generateButton">生成随机数</button>
+    <div id="result"></div>
+    <button id="hideButton" class="hidden">记住了</button>
+    <button id="showAllButton" class="hidden">显示所有数字</button>
+    <div id="allResults" class="hidden">所有生成的随机数将显示在这里</div>
+
+    <script>
+        const resultDiv = document.getElementById('result');
+        const generateButton = document.getElementById('generateButton');
+        const hideButton = document.getElementById('hideButton');
+        const showAllButton = document.getElementById('showAllButton');
+        const allResultsDiv = document.getElementById('allResults');
+        const generatedNumbers = []; // 存储生成的随机数
+
+        function generateRandomNumber() {
+            let num;
+            do {
+                num = Math.floor(Math.random() * 100) + 1;
+            } while (generatedNumbers.includes(num));
+            generatedNumbers.push(num);
+            return num;
+        }
+
+        generateButton.addEventListener('click', () => {
+            const num = generateRandomNumber();
+            resultDiv.innerHTML = `随机数: ${num}`;
+            resultDiv.classList.remove('hidden');
+            hideButton.classList.remove('hidden');
+            showAllButton.classList.remove('hidden');
+        });
+
+        hideButton.addEventListener('click', () => {
+            resultDiv.classList.add('hidden');
+            hideButton.classList.add('hidden');
+        });
+
+        showAllButton.addEventListener('click', () => {
+            const allNumbers = generatedNumbers.map(num => `随机数: ${num}`).join('<br>');
+            allResultsDiv.innerHTML = allNumbers;
+            allResultsDiv.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
