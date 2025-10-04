@@ -1,5 +1,7 @@
-# Random_number_generating
-> 一个生成随机数字（1-100之间的整数）的网站 并且能够保证每次生成的数字和之前是不一样的！
+## Random Number Generating
+
+A html document that generates random numbers (integers between 1 and 100) and ensures that each generated number is different from the previous ones!
+
 ---
 
-> 网站的美化功能等仍在建设当中！
+The beautification features of the website are still under development... Depends on my academic situation.
